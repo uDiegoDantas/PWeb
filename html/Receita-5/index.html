@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+      <meta charset="UTF-8">      
+   </head>
+
+   <body>
+      <div><a href="#" id="linkCarregar">Carregar sabores de sorvete</a></div>
+      <div id="container"></div>            
+   </body>   
+
+   <script>
+      
+      let sorvetes = ["Chocolate", "Baunilha", "Morango"]
+
+      
+      const carregarDiv = (items) => {
+         const div = document.getElementById("container")
+         const itemsHtml = items.map(item => `<h1>${item}</h1>`) 
+         div.innerHTML = `${itemsHtml.join("\n")}`
+      }
+
+      
+      let link = document.getElementById("linkCarregar")
+      link.addEventListener("click", (event) => {
+         event.preventDefault() 
+         carregarDiv(sorvetes)
+      })                 
+   </script>
+
+</html>
