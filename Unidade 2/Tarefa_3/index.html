@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>React</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="app"></div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
+
+      <script type="text/babel">
+         const bebidas = [
+            { nome: "Cachaça 51", tipo: "Cachaça", teorAlcoolico: "39%" },
+            { nome: "Velho Barreiro", tipo: "Cachaça", teorAlcoolico: "39%" },
+            { nome: "Ypióca", tipo: "Cachaça", teorAlcoolico: "38%" }
+         ];
+
+         class Cabecalho extends React.Component {
+            render() {
+               return (
+                  <h1 className="cabecalho">
+                     {this.props.texto}
+                  </h1>
+               );
+            }
+         }
+
+         class TabelaBebidas extends React.Component {
+            render() {
+               return (
+                  <div>
+                     <h1 className="titulo-tabela">
+                        {this.props.titulo}
+                     </h1>
+                     <table className="tabela">
+                        <thead>
+                           <tr>
+                              <th>Nome</th>
+                              <th>Tipo</th>
+                              <th>Teor Alcoólico</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           {bebidas.map((bebida, index) => (
+                              <tr key={index}>
+                                 <td>{bebida.nome}</td>
+                                 <td>{bebida.tipo}</td>
+                                 <td>{bebida.teorAlcoolico}</td>
+                              </tr>
+                           ))}
+                        </tbody>
+                     </table>
+                  </div>
+               );
+            }
+         }
+
+         class Botao extends React.Component {
+            render() {
+               return (
+                  <button className="botao" onClick={this.props.aoClicar}>
+                     {this.props.texto}
+                  </button>
+               );
+            }
+         }
+
+         class App extends React.Component {
+            constructor(props) {
+               super(props);
+               this.state = { mostrarTabela: false };
+            }
+
+            handleMostrarTabela = () => {
+               this.setState({ mostrarTabela: true });
+            };
+
+            render() {
+               return (
+                  <div>
+                     <Cabecalho texto="Minha tabela de bebidas" />
+                     <Botao texto="Mostrar Bebidas" aoClicar={this.handleMostrarTabela} />
+                     {this.state.mostrarTabela && <TabelaBebidas titulo="Tabela de Cana" />}
+                  </div>
+               );
+            }
+         }
+
+         ReactDOM.render(<App />, document.getElementById("app"));
+      </script>
+   </body>
+</html>

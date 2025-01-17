@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>React</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div id="app"></div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
+
+      <script type="text/babel">
+         class Cabecalho extends React.Component {
+            render() {
+               return <h1 className="cabecalho">{this.props.texto}</h1>;
+            }
+         }
+
+         class Tabela extends React.Component {
+            render() {
+               const { cabecalhos, conteudo } = this.props;
+
+               return (
+                  <table className="tabela">
+                     <thead>
+                        <tr>
+                           {cabecalhos.map((cabecalho, index) => (
+                              <th key={index}>{cabecalho}</th>
+                           ))}
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {conteudo.map((linha, index) => (
+                           <tr key={index}>
+                              {linha.map((celula, i) => (
+                                 <td key={i}>{celula}</td>
+                              ))}
+                           </tr>
+                        ))}
+                     </tbody>
+                  </table>
+               );
+            }
+         }
+
+         class Botao extends React.Component {
+            render() {
+               return (
+                  <button className="botao" onClick={this.props.aoClicar}>
+                     {this.props.texto}
+                  </button>
+               );
+            }
+         }
+
+         class App extends React.Component {
+            constructor(props) {
+               super(props);
+               this.state = { mostrarTabela: false };
+            }
+
+            handleMostrarTabela = () => {
+               this.setState({ mostrarTabela: true });
+            };
+
+            render() {
+               const cabecalhos = ["Nome", "Tipo", "Teor Alcoólico"];
+               const conteudo = [
+                  ["Cachaça 51", "Cachaça", "39%"],
+                  ["Velho Barreiro", "Cachaça", "39%"],
+                  ["Ypióca", "Cachaça", "38%"],
+               ];
+
+               return (
+                  <div>
+                     <Cabecalho texto="Minha tabela de bebidas" />
+                     <Botao texto="Mostrar Tabela" aoClicar={this.handleMostrarTabela} />
+                     {this.state.mostrarTabela && (
+                        <Tabela cabecalhos={cabecalhos} conteudo={conteudo} />
+                     )}
+                  </div>
+               );
+            }
+         }
+
+         ReactDOM.render(<App />, document.getElementById("app"));
+      </script>
+   </body>
+</html>

@@ -1,0 +1,63 @@
+/* Estilo do cabeçalho */
+.cabecalho {
+   text-align: center;
+   font-family: Arial, sans-serif;
+   font-size: 24px;
+   color: #333;
+   margin-bottom: 20px;
+}
+
+/* Estilo do título da tabela */
+.titulo-tabela {
+   text-align: center;
+   font-family: Arial, sans-serif;
+   font-size: 20px;
+   color: #555;
+   margin-bottom: 10px;
+}
+
+/* Estilo da tabela */
+.tabela {
+   width: 80%;
+   margin: 20px auto;
+   border-collapse: collapse;
+   font-family: Arial, sans-serif;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabela thead {
+   background-color: #4CAF50;
+   color: white;
+}
+
+.tabela th, .tabela td {
+   padding: 12px;
+   text-align: left;
+   border-bottom: 1px solid #ddd;
+}
+
+.tabela tbody tr:nth-child(even) {
+   background-color: #f2f2f2;
+}
+
+.tabela tbody tr:hover {
+   background-color: #ddd;
+}
+
+/* Estilo do botão */
+.botao {
+   display: block;
+   margin: 20px auto;
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.botao:hover {
+   background-color: #45a049;
+}
